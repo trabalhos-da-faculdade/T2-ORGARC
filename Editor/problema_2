@@ -1,0 +1,43 @@
+; Gabriel Fanto Stundner, Lucas Hanauer , Luis Guerra
+; loop: le o caractere do vetor e verifica se e um espaco vazio
+; next: vai para a proxima posicao do vetor e verifica o tamanho do vetor
+; increase: aumenta o contador, onde o contador e o numero de palavras
+
+main
+	ldi r1,0
+	ldi r2,frase
+loop
+	ldb r3,r2
+	ldb r4,check
+	sub r5,r3,r4
+	bez r5,increase
+	bnz r5,next
+next
+	add r1,1
+	add r2,r1
+	ldw r3,size
+	slt r4,r1,r3
+	bez r4,end
+	bnz r7,loop
+increase
+	ldw r4,count
+	add r4,1
+	stw r4,count
+	bnz r7,next
+	
+end
+	ldw r4,count
+	add r4,1
+	ldi r6,0xf002
+	stw r4,r6
+	hcf	
+
+
+
+
+
+
+frase "MeuColega Lucas e Maluco"
+size 24
+check " "
+count 0
