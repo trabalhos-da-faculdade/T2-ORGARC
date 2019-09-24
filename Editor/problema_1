@@ -1,0 +1,52 @@
+; Gabriel Fanto Stundner, Lucas Hanauer , Luis Guerra
+; loop: acessa o vetor pelo valor do r1 e verifica se e par ou impar
+; par: incrementa a variavel par
+; impar: incrementa a variavel impar
+; next: acessa a proxima posicao do vetor e verifica se nao passou o tamanho maximo
+; end: acessa os valores das variaveis e imprime no terminal 
+
+main
+	ldi r1,0
+	ldi r3,vet
+loop
+	ldw r2,r3
+	ldi r4,1
+	and r2,r4
+	bez r2,par
+	bnz r2,impar
+par
+	ldw r4,var_par
+	add r4,1
+	stw r4,var_par
+	bnz r7,next
+impar
+	ldw r4,var_impar
+	add r4,1
+	stw r4,var_impar
+	bnz r7,next
+next
+	add r1,1
+	add r3,r1
+	add r3,r1
+	ldw r5,size
+	slt r6,r1,r5
+	bez r6,end
+	bnz r7,loop
+end
+	ldw r4,var_par
+	ldw r6,var_impar
+	ldb r1,println
+	ldi r5,0xf002
+	ldi r2,0xf000
+	stw r4,r5
+	stw r1,r2
+	stw r6,r5
+	hcf
+	
+
+
+vet 15 19 3 2 56 20 43 35 55
+var_par 0
+var_impar 0
+size 9
+println "\n"
