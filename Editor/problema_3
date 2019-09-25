@@ -1,0 +1,83 @@
+main
+	ldi r1,vet
+	ldw r2,count
+printvet
+	ldi r3,0xf002
+	ldw r4,r1
+	stw r4,r3
+next
+	add r2,1
+	add r1,r2
+	ldw r5,size
+	slt r4,r2,r5
+	bnz r4,printvet
+	ldw r2,0
+	add r1,r2
+loop
+	ldw r3,i
+	ldw r4,size
+	slt r5,r3,r4			
+	bnz r5,for
+	bez r5,end
+for
+	ldw r3,aux
+	stw r3,r1
+	ldw r3,i
+	ldw r4,j
+	stw r4,r3
+while
+	slt r3,r4,0
+	bnz r3,endwhile
+	sub r4,1
+	add r1,r4
+	ldw r4,r1
+	ldw r3,aux
+	slt r5,r3,r4
+	bez r5,endwhile
+	ldw r3,j
+	add r1,r3
+	ldw r3,r1
+	ldw r4,j
+	sub r4,1
+	add r1,r4
+	ldw r4,r1
+	stw r3,r4
+	ldw r4,j
+	sub r4,1
+	stw r4,j
+	bnz r7,while
+endwhile	
+	ldw r3,j
+	ldw r4,aux
+	add r1,r3
+	ldw r3,r1
+	stw r3,r4
+	ldw r3,i
+	add r3,1
+	stw r3,i
+	bnz r7,loop
+end
+	ldi r2,0
+	add r1,r2
+printvet2
+	ldi r3,0xf002
+	ldi r5,0xf000
+	ldw r4,r1
+	stw r4,r3
+	stw r6,r5
+	add r2,1
+	add r1,r2
+	ldw r3,size
+	slt r4,r2,r3
+	bnz r4,printvet2
+	hcf
+
+
+vet 12 14 55 6 74 32
+size 6
+espaco " "
+i 1
+j 0
+aux 0
+count 0
+

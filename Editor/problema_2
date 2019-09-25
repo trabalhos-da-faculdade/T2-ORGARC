@@ -2,6 +2,8 @@
 ; loop: le o caractere do vetor e verifica se e um espaco vazio
 ; next: vai para a proxima posicao do vetor e verifica o tamanho do vetor
 ; increase: aumenta o contador, onde o contador e o numero de palavras
+; primeiro valor printado e o numero de impares
+; segundo valor printado e o numero de pares
 
 main
 	ldi r1,0
